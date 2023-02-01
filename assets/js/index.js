@@ -2,21 +2,29 @@ const input = document.querySelector('#input');
 const button = document.getElementById('button');
 const IP = document.querySelector("#putIP");
 const locations = document.querySelector("#putLocation");
+const postalCode = document.querySelector("#putPostalCode");
 const timezone = document.querySelector("#putTimezone");
 const ISP = document.querySelector("#putISP");
 
 input.addEventListener('input', ValueTyped)
 button.addEventListener("click", Submit)
 
-let typed;
+input.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        button.click();
+    }
+});
+
+let typed = "57.74.3.0";
 let response;
 
 function ValueTyped(e) {
     typed = e.target.value;
 }
 
-async function getAPI() {
-    const request = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_2ntYNcQtGR9tuausMwD7NmNaqFLdq&ipAddress=${typed}`)
+async function getAPI(e) {
+    const request = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_2ntYNcQtGR9tuausMwD7NmNaqFLdq&ipAddress=${e}`)
     response = await request.json()
     console.log(response)
 }
@@ -24,26 +32,19 @@ async function getAPI() {
 function show(response) {
     IP.textContent = `${response.ip}`
     locations.textContent = `${response.location.city}, ${response.location.country}`
+    postalCode.textContent = `${response.location.postalCode}`
     timezone.textContent = `UTC ${response.location.timezone}`
     ISP.textContent = `${response.isp}`
 }
 
 async function Submit() {
-    await getAPI()
+    await getAPI(typed)
     show(response)
     setMap()
 }
 
-var map = L.map('map').setView([-22.95, -43.21], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-var marker = L.marker([-22.95, -43.21]).addTo(map);
-
-async function setMap(){
+async function setMap() {
     map.setView([`${response.location.lat}`, `${response.location.lng}`], 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -52,5 +53,29 @@ async function setMap(){
     }).addTo(map);
 
     map.removeLayer(marker)
-    marker = L.marker([`${response.location.lat}`, `${response.location.lng}`]).addTo(map);
+    marker = L.marker([`${response.location.lat}`, `${response.location.lng}`], { icon: Icon }).addTo(map);
 }
+
+async function init() {
+    await getAPI(typed)
+    show(response)
+
+    var map = L.map('map').setView([-23.5475, -46.63611], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var Icon = L.icon({
+        iconUrl: './assets/images/icon-location.svg',
+
+        iconSize: [38, 50], // size of the icon
+        iconAnchor: [19, 50], // point of the icon which will correspond to marker's location
+    });
+
+    var marker = L.marker([-23.5475, -46.63611], { icon: Icon }).addTo(map);
+
+}
+
+init()

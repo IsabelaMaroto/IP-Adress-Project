@@ -46,6 +46,11 @@ input,
 select {
   margin: 0;
 }
+button:hover,
+input:hover,
+select:hover {
+  cursor: pointer;
+}
 
 html {
   box-sizing: border-box;
@@ -77,6 +82,10 @@ th {
   padding: 0;
 }
 
+main {
+  position: relative;
+}
+
 .background__blue {
   display: flex;
   justify-content: center;
@@ -85,13 +94,120 @@ th {
   background-image: url("../images/pattern-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
+  height: 12.5rem;
+}
+.background__blue h1 {
+  color: hsl(0deg, 0%, 100%);
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin-bottom: 1.875rem;
+}
+.background__blue div {
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+.background__blue div #input {
+  width: 21.875rem;
+  padding: 0.625rem 1.25rem;
+  border-top-left-radius: 0.625rem;
+  border-bottom-left-radius: 0.625rem;
+  border: none;
+  font-size: 0.9375rem;
+}
+.background__blue div #button {
+  padding: 0.625rem;
+  width: 2.5rem;
+  background-color: hsl(0deg, 0%, 0%);
+  border-top-right-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+  border: none;
+}
+.background__blue div #button img {
+  height: 0.5rem;
+}
+.background__blue div #button:hover {
+  background-color: hsl(0deg, 0%, 17%);
+}
+@media (max-width: 31.25rem) {
+  .background__blue {
+    height: 18.75rem;
+    justify-content: unset;
+    padding-top: 20px;
+  }
+  .background__blue div #input {
+    width: 18.75rem;
+  }
 }
 
 .background__map #map {
-  height: 180px;
+  height: 31.25rem;
 }
 
 .background__absolute {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: space-around;
+  text-align: left;
+  z-index: 999;
+  width: auto;
+  height: auto;
+  padding: 1.25rem;
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 0.625rem;
+}
+.background__absolute div {
+  flex: 1;
+  border-right: 0.3px solid hsl(0deg, 0%, 59%);
+  padding: 0 1.25rem;
+  min-width: 12.5rem;
+}
+.background__absolute div:last-child {
+  border: none;
+}
+.background__absolute h4 {
+  color: hsl(0deg, 0%, 59%);
+  margin-bottom: 0.625rem;
+  font-weight: 500;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.0938rem;
+}
+.background__absolute h2 {
+  color: hsl(0deg, 0%, 17%);
+  font-weight: 700;
+  margin-bottom: 0.3125rem;
+}
+@media (max-width: 56.25rem) {
+  .background__absolute {
+    flex-direction: column;
+    top: 18.75rem;
+    text-align: center;
+    width: 90%;
+  }
+  .background__absolute div {
+    margin-bottom: 1.25rem;
+    border: none;
+  }
+  .background__absolute div:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.attribution {
+  display: flex;
+  justify-content: center;
+  background-color: hsl(0deg, 0%, 17%);
+  color: hsl(0deg, 0%, 100%);
+  font-size: 0.8rem;
+  height: auto;
+  padding: 1.1875rem;
+}
+.attribution a {
+  color: hsl(0deg, 0%, 59%);
+}
+
+.leaflet-control-zoom {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
