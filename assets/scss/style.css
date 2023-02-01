@@ -210,4 +210,8 @@ main {
 
 .leaflet-control-zoom {
   display: none;
+}
+
+.leaflet-control-attribution {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
