@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./assets/scss/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+  crossorigin=""></script>
+  <title>Frontend Mentor | IP Address Tracker</title>
+</head>
+
+<body>
+  <main>
+    <div class="background__blue">
+      <h1>IP Address Tracker</h1>
+      <div>
+        <input type="text" placeholder="Search for any IP address or domain" id="input">
+        <button type="button" id="button"></button>
+      </div>
+
+    </div>
+    <div class= 'background__map'>
+      <div id="map">
+
+      </div>
+    </div>
+    <div class="background__absolute">
+      <div class="IP">
+        <h4>IP Address</h4>
+        <h2 id="putIP"></h2>
+      </div>
+      <div class="location">
+        <h4>Location</h4>
+        <h2 id="putLocation"></h2>
+      </div>
+      <div class="timezone">
+        <h4>Timezone</h4>
+        <h2 id="putTimezone"></h2>
+      </div>
+      <div class="isp">
+        <h4>ISP</h4>
+        <h2 id="putISP"></h2>
+      </div>
+    </div>
+
+  </main>
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Isabela Maroto</a>.
+  </footer>
+  <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
