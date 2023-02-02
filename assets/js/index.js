@@ -18,6 +18,9 @@ input.addEventListener("keypress", (event) => {
 
 let typed = "57.74.3.0";
 let response;
+let map;
+let marker;
+let Icon;
 
 function ValueTyped(e) {
     typed = e.target.value;
@@ -60,21 +63,21 @@ async function init() {
     await getAPI(typed)
     show(response)
 
-    var map = L.map('map').setView([-23.5475, -46.63611], 13);
+    map = L.map('map').setView([-23.5475, -46.63611], 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    var Icon = L.icon({
+    Icon = L.icon({
         iconUrl: './assets/images/icon-location.svg',
 
         iconSize: [38, 50], // size of the icon
         iconAnchor: [19, 50], // point of the icon which will correspond to marker's location
     });
 
-    var marker = L.marker([-23.5475, -46.63611], { icon: Icon }).addTo(map);
+    marker = L.marker([-23.5475, -46.63611], { icon: Icon }).addTo(map);
 
 }
 
